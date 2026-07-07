@@ -87,7 +87,9 @@ nav.scrolled{background:rgba(5,8,18,0.96);box-shadow:0 4px 40px rgba(0,0,0,0.5);
 
 /* ═══════════════ LAYOUT ═══════════════ */
 .container{max-width:1140px;margin:0 auto;padding:0 24px;}
-.section{padding:100px 0;position:relative;}
+.section{display:none;padding:100px 0;position:relative;min-height:100vh;}
+.section.active{display:block;animation:fadeUpSec 0.5s ease forwards;}
+@keyframes fadeUpSec{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 .tag{display:inline-flex;align-items:center;gap:6px;font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);padding:5px 16px;border-radius:20px;margin-bottom:16px;}
 .sec-title{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;letter-spacing:-0.03em;color:var(--text);line-height:1.1;}
 .sec-title span{background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -97,7 +99,8 @@ nav.scrolled{background:rgba(5,8,18,0.96);box-shadow:0 4px 40px rgba(0,0,0,0.5);
 .fade-up.visible{opacity:1;transform:translateY(0);}
 
 /* ═══════════════ HERO ═══════════════ */
-#home{min-height:100vh;display:flex;align-items:center;padding-top:68px;position:relative;overflow:hidden;}
+#home{display:none;align-items:center;padding-top:68px;position:relative;overflow:hidden;min-height:100vh;}
+#home.active{display:flex;animation:fadeUpSec 0.5s ease forwards;}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:1140px;margin:0 auto;padding:60px 24px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.18);padding:6px 18px;border-radius:20px;font-size:0.75rem;color:var(--teal);font-weight:600;margin-bottom:24px;}
 .hero-name{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,5.5vw,3.8rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05;margin-bottom:8px;}
@@ -298,30 +301,30 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 24p
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a class="nav-logo" href="#home">FI<span style="color:var(--muted)">.</span></a>
+    <a class="nav-logo" onclick="showSection('home')" style="cursor:pointer">FI<span style="color:var(--muted)">.</span></a>
     <ul class="nav-links">
-      <li><a href="#home" class="active" id="nl-home">Home</a></li>
-      <li><a href="#projects" id="nl-projects">Proyek</a></li>
-      <li><a href="#skills" id="nl-skills">Skills</a></li>
-      <li><a href="#experience" id="nl-experience">Experience</a></li>
-      <li><a href="#about" id="nl-about">Tentang</a></li>
-      <li><a href="#contact" id="nl-contact">Kontak</a></li>
+      <li><a onclick="showSection('home')" class="active" id="nl-home" style="cursor:pointer">Home</a></li>
+      <li><a onclick="showSection('projects')" id="nl-projects" style="cursor:pointer">Proyek</a></li>
+      <li><a onclick="showSection('skills')" id="nl-skills" style="cursor:pointer">Skills</a></li>
+      <li><a onclick="showSection('experience')" id="nl-experience" style="cursor:pointer">Experience</a></li>
+      <li><a onclick="showSection('about')" id="nl-about" style="cursor:pointer">Tentang</a></li>
+      <li><a onclick="showSection('contact')" id="nl-contact" style="cursor:pointer">Kontak</a></li>
     </ul>
     <div class="avail-badge"><div class="dot"></div> Open to Work</div>
     <button class="ham" id="ham-btn" onclick="toggleMenu()"><i class="fas fa-bars" id="ham-icon"></i></button>
   </div>
   <div class="mob-menu" id="mob-menu">
-    <a href="#home" onclick="closeMob()">🏠 Home</a>
-    <a href="#projects" onclick="closeMob()">💼 Proyek</a>
-    <a href="#skills" onclick="closeMob()">⚡ Skills</a>
-    <a href="#experience" onclick="closeMob()">🗺️ Experience</a>
-    <a href="#about" onclick="closeMob()">👤 Tentang</a>
-    <a href="#contact" onclick="closeMob()">📩 Kontak</a>
+    <a onclick="showSection('home'); closeMob()" style="cursor:pointer">🏠 Home</a>
+    <a onclick="showSection('projects'); closeMob()" style="cursor:pointer">💼 Proyek</a>
+    <a onclick="showSection('skills'); closeMob()" style="cursor:pointer">⚡ Skills</a>
+    <a onclick="showSection('experience'); closeMob()" style="cursor:pointer">🗺️ Experience</a>
+    <a onclick="showSection('about'); closeMob()" style="cursor:pointer">👤 Tentang</a>
+    <a onclick="showSection('contact'); closeMob()" style="cursor:pointer">📩 Kontak</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="home">
+<section id="home" class="section active">
   <div class="hero-inner">
     <div class="fade-up">
       <div class="hero-badge">
@@ -333,7 +336,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 24p
       <p class="hero-desc">Membangun solusi digital modern — dari sistem manajemen bisnis, platform komunitas, hingga web interaktif. Spesialis <strong style="color:var(--text)">Next.js · TypeScript · Supabase</strong>.</p>
       <p class="hero-loc"><i class="fas fa-map-marker-alt"></i> Bandung, Indonesia</p>
       <div class="hero-cta">
-        <a href="#projects" class="btn-primary"><i class="fas fa-briefcase"></i> Lihat Proyek</a>
+        <a onclick="showSection('projects')" class="btn-primary" style="cursor:pointer"><i class="fas fa-briefcase"></i> Lihat Proyek</a>
         <a href="mailto:fadilahikhsann@gmail.com" class="btn-outline"><i class="fas fa-envelope"></i> Hubungi Saya</a>
         <a href="https://github.com/fadilahikhsan" target="_blank" class="btn-gold"><i class="fab fa-github"></i> GitHub</a>
       </div>
@@ -832,31 +835,39 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:28px 24p
   <div class="foot-inner">
     <div class="foot-copy">© 2025 <span>Fadilah Ikhsan</span>. Dibuat dengan ❤️</div>
     <div class="foot-links">
-      <a href="#home">Kembali ke Atas ↑</a>
+      <a onclick="showSection('home')" style="cursor:pointer">Kembali ke Atas ↑</a>
       <a href="https://github.com/fadilahikhsan/porto" target="_blank">Source Portfolio</a>
     </div>
   </div>
 </footer>
 
 <script>
+/* SPA Navigation */
+function showSection(id) {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  
+  const sec = document.getElementById(id);
+  if(sec) sec.classList.add('active');
+  
+  const nav = document.getElementById('nl-' + id);
+  if(nav) nav.classList.add('active');
+
+  // Trigger intersection observer again for elements in the new section
+  setTimeout(() => {
+    document.querySelectorAll('#' + id + ' .fade-up').forEach(el => obs.observe(el));
+    if(id === 'skills') {
+      const sb = document.getElementById('sbars');
+      if(sb) bObs.observe(sb);
+    }
+  }, 100);
+}
+
 /* Scroll progress */
 window.addEventListener('scroll',()=>{
-  const d=document.documentElement;
-  document.getElementById('pbar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>30);
-  updateNav();
 });
-
-/* Active nav */
-function updateNav(){
-  const secs=['home','projects','skills','experience','about','contact'];
-  const sy=window.scrollY+100;
-  secs.forEach(id=>{
-    const el=document.getElementById(id),nl=document.getElementById('nl-'+id);
-    if(!el||!nl)return;
-    nl.classList.toggle('active',sy>=el.offsetTop && sy<el.offsetTop+el.offsetHeight);
-  });
-}
 
 /* Mobile menu */
 function toggleMenu(){
@@ -881,11 +892,10 @@ setTimeout(type,600);
 
 /* Fade observer */
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.12});
-document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+document.querySelectorAll('#home .fade-up').forEach(el=>obs.observe(el));
 
 /* Skill bars */
 const bObs=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('.sbar-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});bObs.unobserve(e.target);});},{threshold:0.2});
-const sb=document.getElementById('sbars');if(sb)bObs.observe(sb);
 
 /* Filter projects */
 function filterP(cat,btn){
@@ -894,16 +904,7 @@ function filterP(cat,btn){
   document.querySelectorAll('.pcard').forEach(c=>{
     const show=cat==='all'||c.dataset.cat===cat;
     c.style.display=show?'flex':'none';
-    // Fix featured col span
-    if(cat!=='all'||c.classList.contains('feat')){}
   });
-  // Fix grid for featured
-  const grid=document.getElementById('pgrid');
-  if(cat==='fullstack'||cat==='all'){
-    grid.style.gridTemplateColumns='repeat(3,1fr)';
-  } else {
-    grid.style.gridTemplateColumns='repeat(3,1fr)';
-  }
 }
 
 /* Particles */
@@ -917,15 +918,6 @@ function filterP(cat,btn){
     con.appendChild(p);
   }
 })();
-
-/* Smooth scroll for all anchor links */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const id=a.getAttribute('href').slice(1);
-    const el=document.getElementById(id);
-    if(el){e.preventDefault();const top=el.getBoundingClientRect().top+window.pageYOffset-68;window.scrollTo({top,behavior:'smooth'});}
-  });
-});
 </script>
 </body>
 </html>
