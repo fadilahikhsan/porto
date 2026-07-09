@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#060816"/>
+  <g transform="translate(80,80)">
+    <rect width="1040" height="560" rx="20" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)"/>
+    <g transform="translate(48,48)">
+      <text x="0" y="40" font-family="'Syne',sans-serif" font-size="42" fill="#fff" font-weight="800">Labaku</text>
+      <text x="0" y="76" font-family="'Inter',sans-serif" font-size="16" fill="#9fb6c7">Keuangan UMKM — Kasir & HPP</text>
+
+      <!-- line chart -->
+      <path d="M12 180 L96 130 L180 160 L264 100 L348 140 L432 90 L516 120" fill="none" stroke="#06b6d4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+      <g transform="translate(0,148)" fill="#06b6d4">
+        <circle cx="84" cy="-10" r="8"/>
+        <circle cx="216" cy="-20" r="8"/>
+        <circle cx="348" cy="-40" r="8"/>
+      </g>
+
+      <!-- cards -->
+      <g transform="translate(520,120)">
+        <rect x="0" y="0" width="480" height="192" rx="12" fill="url(#g2)" opacity="0.12"/>
+        <text x="24" y="36" font-family="'Inter',sans-serif" font-size="14" fill="#cfeefe">Transaksi Hari Ini</text>
+        <text x="24" y="72" font-family="'Inter',sans-serif" font-size="28" fill="#fff" font-weight="700">+45</text>
+        <text x="24" y="110" font-family="'Inter',sans-serif" font-size="14" fill="#9fb6c7">Pendapatan: Rp 2.350.000</text>
+      </g>
+
+      <!-- tag -->
+      <rect x="0" y="260" width="180" height="40" rx="10" fill="#0ea5a4" opacity="0.12"/>
+      <text x="18" y="286" font-family="'Inter',sans-serif" font-size="14" fill="#0ea5a4">Row-Level Security</text>
+
+    </g>
+  </g>
+</svg>
